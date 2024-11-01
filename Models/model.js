@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const subscriberSchema = new mongoose.Schema({
+const movieSchema = new mongoose.Schema({
      name:{
           type: String,
           required: true
@@ -10,7 +10,7 @@ const subscriberSchema = new mongoose.Schema({
           required: false
      },
      rating:{
-          type: int,
+          type: Number,
           required: true
      },
      description:{
@@ -19,4 +19,4 @@ const subscriberSchema = new mongoose.Schema({
      }
 })
 
-module.exports = mongoose.model('Subscriber', subscriberSchema);
+module.exports = mongoose.model('Subscriber', movieSchema);

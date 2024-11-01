@@ -1,11 +1,12 @@
 require('dotenv').config();
 const mongoose = require('mongoose');
+const routes = require('./Routes/routing.js');
 const express = require('express');
 const app = express();
 
-mongoose.connect(process.env.DATABASE_URL, { useNewURLParser: true });
+mongoose.connect(process.env.DATABASE_URL);
 const db = mongoose.connection;
-db.on(err, (err) => {
+db.on('error', (err) => {
      console.log(`ERROR: ${err}`);
 })
 db.once('open', () => {
@@ -13,6 +14,8 @@ db.once('open', () => {
 })
 
 app.use(express.json());
+
+app.use('/movies', routes);
 
 app.listen(process.env.APP_PORT, () => {
      console.log(`Example app listening on port ${process.env.APP_PORT}!`)
