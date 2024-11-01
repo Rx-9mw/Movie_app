@@ -1,4 +1,5 @@
 require('dotenv').config();
+const cors = require('cors');
 const mongoose = require('mongoose');
 const routes = require('./Routes/routing.js');
 const express = require('express');
@@ -12,6 +13,7 @@ db.on('error', (err) => {
 db.once('open', () => {
      console.log('Connected to the databse!');
 })
+app.use(cors());
 
 app.use(express.json());
 
